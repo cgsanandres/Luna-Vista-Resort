@@ -1,396 +1,209 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexus Events - About Us</title>
-    <!-- Import Unique Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Roboto:wght@700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <style>
-        /* Base Reset & Global Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<title>About | Luna Vista</title>
 
-        body {
-            background: url('https://images.unsplash.com/photo-1585076641399-5c06d1b38a4c?q=80&w=1000&auto=format&fit=crop') repeat;
-            background-color: #e6e6fa;
-            background-blend-mode: overlay;
-            padding: 0 2rem;
-            font-family: 'Roboto', sans-serif;
-            color: #2d2d2d;
-        }
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        /* Header - Custom Accents */
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 3rem;
-            position: relative;
-        }
+<style>
 
-        .logo {
-            background: #008080;
-            color: #fff;
-            padding: 0.8rem 1.5rem;
-            font-family: 'Bangers', cursive;
-            font-size: 2.2rem;
-            letter-spacing: 1.5px;
-            border: 4px solid #2d2d2d;
-            position: relative;
-        }
+@import url('https://googleapis.com');
 
-        .logo::before {
-            content: "EST. 2024";
-            position: absolute;
-            top: -15px;
-            left: 10px;
-            background: #ff7f50;
-            color: #2d2d2d;
-            font-size: 0.7rem;
-            padding: 0.2rem 0.6rem;
-            border: 2px solid #2d2d2d;
-        }
+:root {
+    --primary: #0a192f;
+    --accent: #c5a059;
+    --white: #ffffff;
+}
 
-        .nav-links {
-            display: flex;
-            gap: 1rem;
-        }
+* { box-sizing: border-box; transition: all 0.5s ease; }
 
-        .nav-btn {
-            background: #fff;
-            color: #2d2d2d;
-            padding: 0.6rem 1.2rem;
-            text-decoration: none;
-            border: 3px solid #2d2d2d;
-            border-right-width: 6px;
-            border-bottom-width: 6px;
-            border-radius: 2px;
-            font-weight: 900;
-            transition: all 0.2s ease;
-        }
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--primary);
+    color: var(--white);
+    overflow-x: hidden;
+}
 
-        .nav-btn.active {
-            background: #9370db;
-            color: #fff;
-        }
+/* --- Persistent Video Background --- */
+#bg-video {
+    position: fixed;
+    right: 0; bottom: 0;
+    min-width: 100%; min-height: 100%;
+    z-index: -1;
+    object-fit: cover;
+    filter: brightness(0.4);
+}
 
-        .nav-btn:hover {
-            background: #ff7f50;
-            color: #fff;
-            transform: translate(-1px, -1px);
-        }
+/* --- Header & Nav --- */
+header {
+    background-color: var(--primary);
+    padding: 25px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--accent);
+    position: sticky; top: 0; z-index: 1000;
+}
 
-        /* About Container */
-        .about-container {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 3rem;
-            border: 5px solid #2d2d2d;
-            box-shadow: 8px 8px 0 #ff7f50, inset 0 0 10px rgba(0,0,0,0.1);
-            border-radius: 5px;
-            width: 100%;
-            max-width: 900px;
-            margin: 2rem auto;
-        }
+header h1 { font-family: 'Cinzel', serif; color: var(--accent); letter-spacing: 4px; margin: 0; font-size: 1.6rem; }
 
-        .about-title {
-            font-family: 'Bangers', cursive;
-            font-size: 3rem;
-            color: #2d2d2d;
-            text-shadow: 3px 3px 0 #ff7f50;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
+nav a {
+    color: white; text-decoration: none; margin-left: 25px;
+    font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase;
+}
+nav a:hover { color: var(--accent); }
 
-        .about-subtitle {
-            text-align: center;
-            font-size: 1.2rem;
-            color: #444;
-            margin-bottom: 3rem;
-            font-weight: 500;
-        }
+/* --- About Content Card --- */
+.section {
+    max-width: 1100px;
+    margin: 80px auto;
+    padding: 80px;
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    text-align: center;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+}
 
-        /* Section Styles */
-        .about-section {
-            margin-bottom: 3rem;
-        }
+.section span {
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 0.8rem;
+    display: block;
+    margin-bottom: 15px;
+}
 
-        .section-heading {
-            font-family: 'Bangers', cursive;
-            font-size: 2rem;
-            color: #008080;
-            text-shadow: 1px 1px 0 #2d2d2d;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            border-bottom: 3px solid #2d2d2d;
-            padding-bottom: 0.5rem;
-        }
+.section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    font-style: italic;
+    font-weight: 400;
+    margin: 0;
+}
 
-        .section-heading i {
-            color: #ff7f50;
-        }
+.section p {
+    line-height: 2.2;
+    color: #cbd5e1;
+    font-size: 1.1rem;
+    max-width: 850px;
+    margin: 40px auto;
+}
 
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #444;
-            margin-bottom: 1.5rem;
-        }
+/* --- Stats Grid --- */
+.stats-grid {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 60px;
+    border-top: 1px solid rgba(197, 160, 89, 0.3);
+    padding-top: 50px;
+}
 
-        /* Features Grid */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
+.stat-item h3 { font-family: 'Cinzel', serif; font-size: 2.5rem; color: var(--accent); margin: 0; }
+.stat-item p { font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; margin-top: 10px; }
 
-        .feature-card {
-            background: #f9f9f9;
-            padding: 2rem;
-            border: 3px solid #2d2d2d;
-            border-right-width: 6px;
-            border-bottom-width: 6px;
-            border-radius: 2px;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
+/* --- Secondary Philosophy Section --- */
+.philosophy {
+    background: rgba(10, 25, 47, 0.9);
+    padding: 100px 15%;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    text-align: left;
+}
 
-        .feature-card:hover {
-            transform: translate(-4px, -4px);
-        }
+.philosophy-text { flex: 1; }
+.philosophy-text h3 { font-family: 'Playfair Display', serif; font-size: 2.8rem; color: var(--accent); margin-bottom: 20px; }
 
-        .feature-icon {
-            font-size: 3rem;
-            color: #9370db;
-            margin-bottom: 1rem;
-        }
+footer {
+    background: var(--primary);
+    color: var(--accent);
+    text-align: center;
+    padding: 40px;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+}
 
-        .feature-title {
-            font-size: 1.3rem;
-            font-weight: 900;
-            margin-bottom: 0.8rem;
-            color: #2d2d2d;
-        }
-
-        .feature-desc {
-            color: #666;
-            font-size: 0.95rem;
-        }
-
-        /* Team Section */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-        }
-
-        .team-member {
-            text-align: center;
-        }
-
-        .team-avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 4px solid #008080;
-            margin-bottom: 1rem;
-            box-shadow: 4px 4px 0 #ff7f50;
-        }
-
-        .team-name {
-            font-weight: 900;
-            font-size: 1.1rem;
-        }
-
-        .team-role {
-            color: #008080;
-            font-weight: 700;
-            font-size: 0.9rem;
-        }
-
-        /* Contact CTA */
-        .cta-box {
-            background: linear-gradient(135deg, #ff7f50, #9370db);
-            padding: 2.5rem;
-            border: 4px solid #2d2d2d;
-            text-align: center;
-            margin-top: 3rem;
-        }
-
-        .cta-text {
-            color: #fff;
-            font-size: 1.5rem;
-            font-weight: 900;
-            margin-bottom: 1.5rem;
-            text-shadow: 2px 2px 0 #2d2d2d;
-        }
-
-        .cta-button {
-            background: #fff;
-            color: #2d2d2d;
-            padding: 1rem 2.5rem;
-            text-decoration: none;
-            font-weight: 900;
-            border: 3px solid #2d2d2d;
-            border-right-width: 6px;
-            border-bottom-width: 6px;
-            transition: all 0.2s ease;
-            display: inline-block;
-        }
-
-        .cta-button:hover {
-            transform: translate(-3px, -3px);
-            background: #2d2d2d;
-            color: #fff;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .about-container {
-                padding: 2rem;
-                margin: 1rem;
-            }
-            .about-title {
-                font-size: 2.2rem;
-            }
-            .header-container {
-                flex-direction: column;
-                gap: 1.5rem;
-            }
-            .nav-links {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-        }
-    </style>
+</style>
 </head>
+
 <body>
 
-    <header class="header-container">
-        <div class="logo">Nexus Events</div>
-        <nav class="nav-links">
-            <a href="index.html" class="nav-btn">Home</a>
-            <a href="events.html" class="nav-btn">Events</a>
-            <a href="tickets.html" class="nav-btn">Tickets</a>
-            <a href="venue.html" class="nav-btn">Venue</a>
-            <a href="contact.html" class="nav-btn">Contact</a>
-			<a href="about.html" class="nav-btn active">About</a>
-			<a href="account.html" class="nav-btn">Account</a>
-			<a href="logout.html" class="nav-btn">Logout</a>
-            <a href="admin.html" class="nav-btn">Admin</a>
-        </nav>
-    </header>
+<!-- Persistant Full-Screen Video -->
+<video autoplay muted loop id="bg-video">
+    <source src="video/resort.mp4" type="video/mp4">
+</video>
 
-    <main class="about-container">
-        <h1 class="about-title">About Nexus Events</h1>
-        <p class="about-subtitle">Where live energy, bold art, and magnetic people collide.</p>
+<header>
+    <h1>Luna Vista Resort</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="rooms.html">Rooms</a>
+        <a href="amenities.html">Amenities</a>
+        <a href="booking.html">Book Now</a>
+        <a href="contact.html">Contact</a>
+        <a href="about.html">About</a>
+        <a href="account.html">Account</a>
+    </nav>
+</header>
 
-        <!-- Our Story Section -->
-        <div class="about-section">
-            <h2 class="section-heading">
-                <i class="fas fa-book-open"></i> Our Story
-            </h2>
-            <p class="about-text">
-                Founded in 2024, Nexus Events was born out of a simple idea: to create spaces where culture, music, and creativity meet without boundaries. We saw a gap for events that weren't just "things to attend," but experiences that stay with you.
-            </p>
-            <p class="about-text">
-                From neon-lit synth-wave nights to bustling creator markets and immersive art installations, Nexus is the hub for the new generation. We believe in heavy bass, sharper memories, and zero boring moments. Every event is crafted with passion, designed to look like a neon postcard, and built to connect people.
-            </p>
+<section class="section">
+    <span>The Legacy of Crystal Bay</span>
+    <h2>A Sanctuary of Serenity</h2>
+
+    <p>
+        Founded on the principle of harmonious luxury, Luna Vista Resort has been a cornerstone 
+        of coastal elegance for over two decades. What began as a private family estate has 
+        transformed into a globally recognized sanctuary for those seeking the ultimate 
+        tropical escape.
+    </p>
+
+    <p>
+        Our philosophy is simple: to merge world-class hospitality with the raw, 
+        unspoiled beauty of the ocean. Every suite is designed to capture the 
+        gentle rhythms of the tide, and every meal is a celebration of local 
+        artisanal flavors.
+    </p>
+
+    <div class="stats-grid">
+        <div class="stat-item">
+            <h3>25</h3>
+            <p>Years of Legacy</p>
         </div>
-
-        <!-- What We Do Section -->
-        <div class="about-section">
-            <h2 class="section-heading">
-                <i class="fas fa-bolt"></i> What We Do
-            </h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-music"></i>
-                    </div>
-                    <h3 class="feature-title">Live Experiences</h3>
-                    <p class="feature-desc">Curated concerts, DJ sets, and live performances featuring the best local and international talent.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-palette"></i>
-                    </div>
-                    <h3 class="feature-title">Art & Visuals</h3>
-                    <p class="feature-desc">Immersive light shows, oversized LED canvases, and interactive art installations.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-store"></i>
-                    </div>
-                    <h3 class="feature-title">Pop-Up Markets</h3>
-                    <p class="feature-desc">Discover unique merch, vintage finds, and custom designs from independent creators.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3 class="feature-title">Community</h3>
-                    <p class="feature-desc">Workshops, meetups, and spaces designed to bring creative minds together.</p>
-                </div>
-            </div>
+        <div class="stat-item">
+            <h3>140</h3>
+            <p>Private Cabanas</p>
         </div>
-
-        <!-- Our Values Section -->
-        <div class="about-section">
-            <h2 class="section-heading">
-                <i class="fas fa-heart"></i> Our Values
-            </h2>
-            <p class="about-text">
-                <strong>🎨 Creativity First:</strong> We never settle for standard. If it looks boring, we don't do it.<br>
-                <strong>🤝 Inclusivity:</strong> Nexus is a safe space for everyone, regardless of background, style, or taste.<br>
-                <strong>⚡ Energy:</strong> We bring the hype. High energy, positive vibes, and unforgettable nights.<br>
-                <strong>🔒 Quality:</strong> Top-tier sound systems, professional lighting, and seamless organization.
-            </p>
+        <div class="stat-item">
+            <h3>12</h3>
+            <p>Michelin Chefs</p>
         </div>
-
-        <!-- Meet The Team -->
-        <div class="about-section">
-            <h2 class="section-heading">
-                <i class="fas fa-user-friends"></i> Meet The Crew
-            </h2>
-            <div class="team-grid">
-                <div class="team-member">
-                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Marcus Lee" class="team-avatar">
-                    <div class="team-name">Marcus Lee</div>
-                    <div class="team-role">Founder & Creative Director</div>
-                </div>
-                <div class="team-member">
-                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Chen" class="team-avatar">
-                    <div class="team-name">Sarah Chen</div>
-                    <div class="team-role">Event Manager</div>
-                </div>
-                <div class="team-member">
-                    <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="David Park" class="team-avatar">
-                    <div class="team-name">David Park</div>
-                    <div class="team-role">Tech & Visuals</div>
-                </div>
-                <div class="team-member">
-                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Elena Rodriguez" class="team-avatar">
-                    <div class="team-name">Elena R.</div>
-                    <div class="team-role">Community Lead</div>
-                </div>
-            </div>
+        <div class="stat-item">
+            <h3>100%</h3>
+            <p>Ocean-Front Suites</p>
         </div>
+    </div>
+</section>
 
-        <!-- Call To Action -->
-        <div class="cta-box">
-            <p class="cta-text">Ready to join the movement?</p>
-            <a href="events.html" class="cta-button">EXPLORE UPCOMING EVENTS</a>
-        </div>
+<!-- NEW DESIGN SECTION: Philosophy -->
+<section class="philosophy">
+    <div class="philosophy-text">
+        <span style="color: var(--accent); letter-spacing: 3px; font-size: 0.8rem; text-transform: uppercase;">Our Commitment</span>
+        <h3>Ecological Elegance</h3>
+        <p style="color: #cbd5e1; line-height: 2;">
+            At Luna Vista, we believe true luxury is sustainable. Our resort operates with a zero-plastic 
+            initiative and supports the Crystal Bay Coral Restoration project. We invite our guests to 
+            experience a paradise that we are actively preserving for the generations to follow.
+        </p>
+    </div>
+    <!-- This can be a placeholder for a high-end image or graphic -->
+    <div style="flex: 0.8; height: 350px; border: 1px solid var(--accent); outline: 15px solid rgba(197, 160, 89, 0.1); outline-offset: 15px; background: url('images/nature.jpg') center/cover;"></div>
+</section>
 
-    </main>
+<footer>
+    © 2026 Luna Vista Resort | The Art of Leisure
+</footer>
 
 </body>
 </html>
